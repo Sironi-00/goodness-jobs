@@ -29,10 +29,9 @@ app.use(session({
     store: store
 }))
 
-app.use(express.static("build"));
-
 const routes = require("./Routes/index");
 app.use("/api", routes);
+app.use("/*", express.static("build"));
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Listening localhost:${PORT}`));

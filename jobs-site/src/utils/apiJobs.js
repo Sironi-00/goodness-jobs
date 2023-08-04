@@ -1,10 +1,17 @@
 import BASE_URL from "./BASE_URL";
 
 const getJobs = async () => {
-    const response = await fetch(`${BASE_URL}/jobs`);
+    try {
+    const response = await fetch(`${BASE_URL}/jobs`, {
+        method: "GET",
+        credentials: "include"
+    });
     if (response.ok) {
         return await response.json();
     } else {
+        return [];
+    } } catch (err) {
+        console.log(err);
         return [];
     }
 };

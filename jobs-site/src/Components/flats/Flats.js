@@ -7,12 +7,15 @@ import Aside from "../aside.js/Aside";
 function Flats() {
     const navigate = useNavigate();
     const [flatsArray, setFlats] = useState([]);
+
     const makeArr = async () => {
         setFlats(await getFlats());
     };
+
     useEffect(() => {
         makeArr();
     }, []);
+
     const handleClick = (id) => {
         navigate(`./${id}`);
     };
@@ -48,17 +51,17 @@ function Flats() {
                 }),
         },
         {
-          name: "Sort DESC",
-          asideClickHandler: () =>
-              setFlats((prev) => {
-                  return [
-                      ...prev.toSorted((a, b) => {
-                          if (a.flat_code < b.flat_code) return 1;
-                          else return -1;
-                      }),
-                  ];
-              }),
-      },
+            name: "Sort DESC",
+            asideClickHandler: () =>
+                setFlats((prev) => {
+                    return [
+                        ...prev.toSorted((a, b) => {
+                            if (a.flat_code < b.flat_code) return 1;
+                            else return -1;
+                        }),
+                    ];
+                }),
+        },
     ];
     return (
         <>

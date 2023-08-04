@@ -8,15 +8,15 @@ function Jobs({ jobObj = {}, handleView, reRender = null }) {
     const { recordId } = useParams();
     const [job, setJob] = useState({ loaded: false });
     const makeState = async () => {
-        if (recordId) {
-            const data = await getJobByRecord(recordId);
-            setJob({ ...data, loaded: true });
-        } else {
-            setJob({ ...jobObj, loaded: true });
-        }
+        setJob({ ...jobObj, loaded: true });
+        // if (recordId) {
+        //     return setJob({ ...await getJobByRecord(recordId), loaded: true });
+        // }
     };
     const [toggleUpdate, setToggleUpdate] = useState(false);
-    useEffect(() => makeState, []);
+    useEffect(() => {
+        makeState();
+    }, []);
 
     const handleDone = async (record_no) => {
         const confirmation = window.confirm("Are you sure?");
@@ -28,7 +28,7 @@ function Jobs({ jobObj = {}, handleView, reRender = null }) {
             if (recordId) {
                 makeState();
             } else {
-                reRender()
+                reRender();
             }
         }
     };
@@ -43,14 +43,11 @@ function Jobs({ jobObj = {}, handleView, reRender = null }) {
             if (recordId) {
                 makeState();
             } else {
-                reRender()
+                reRender();
             }
         }
     };
 
-    if (!job.loaded) {
-        return <h3>Loading ... </h3>;
-    }
     return (
         <>
             {recordId ? <Aside /> : null}

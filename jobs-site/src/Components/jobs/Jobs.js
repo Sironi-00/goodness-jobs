@@ -14,13 +14,16 @@ function Jobs() {
     const { code } = useParams();
 
     const makeArr = async () => {
+        let data = await getJobs();
         if (code) {
-            setJobs(await getJobsByFlat(code));
-        } else {
-            setJobs(await getJobs());
+            data = data.filter(job => job.flat_code === code)
+            // setJobs(await getJobsByFlat(code));
         }
+        setJobs(data);
     };
-    useEffect(() => makeArr, [code]);
+    useEffect(() => {
+        makeArr();
+    }, []);
 
     const handleView = (id) => {
         navigate(`/jobs/${id}`);
@@ -34,10 +37,12 @@ function Jobs() {
         {
             name: "Sort by date",
             asideClickHandler: () => {
-                setJobs(prev => prev.toSorted((a, b) => {
-                    if (a.date_vacant > b.date_vacant) return 1
-                    else return -1
-                }))
+                setJobs((prev) =>
+                    prev.toSorted((a, b) => {
+                        if (a.date_vacant > b.date_vacant) return 1;
+                        else return -1;
+                    })
+                );
             },
         },
         {
@@ -65,6 +70,7 @@ function Jobs() {
                         if (filterState === "*" || filterState === job.cleaned) {
                             return <Job key={job.record_no} jobObj={job} handleView={handleView} reRender={makeArr} />;
                         }
+                        return null;
                     })}
                 </div>
             </div>

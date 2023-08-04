@@ -7,7 +7,10 @@ function Cleaned() {
   const navigate = useNavigate()
   const [cleanedArray, setCleaned] = useState([]);
   const makeArr = async () => setCleaned(await getCleaned());
-  useEffect(() => makeArr, []);
+  
+  useEffect(() => {
+    makeArr()
+  }, []);
   const handleClick = (record_no) => {
     navigate(`/jobs/${record_no}`)
   };
@@ -21,6 +24,7 @@ function Cleaned() {
           makeArr();
       }
   };
+
   return (
     <>
       <Aside />
