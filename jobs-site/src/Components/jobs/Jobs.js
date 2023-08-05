@@ -42,7 +42,7 @@ function Jobs() {
             asideClickHandler: () => setFilter("*"),
         },
         {
-            name: "Toggle Show",
+            name: "Show cleaned",
             asideClickHandler: () =>
                 setFilter((prev) => {
                     return prev === "*" ? false : prev === false ? true : false;
