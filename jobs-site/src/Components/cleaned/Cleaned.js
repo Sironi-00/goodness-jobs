@@ -10,7 +10,7 @@ function Cleaned() {
   
   useEffect(() => {
     makeArr();
-  });
+  }, []);
   const handleClick = (record_no) => {
     navigate(`/jobs/${record_no}`)
   };
@@ -27,6 +27,7 @@ function Cleaned() {
 
   return (
     <>
+    {console.log("#")}
       <Aside />
       <div className="scope">
         <div className="scope-head">

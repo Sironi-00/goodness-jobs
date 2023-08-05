@@ -33,7 +33,7 @@ CREATE TABLE cleaned
     record_no integer,
     PRIMARY KEY (flat_code, record_no),
     date_cleaned date,
-    invoiced boolean,
+    invoiced boolean DEFAULT false,
     date_invoiced date
 );
 -- ALTER

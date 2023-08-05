@@ -1,4 +1,3 @@
-import "./Flats.css";
 import React, { useState } from "react";
 import { createFlat } from "../../utils/apiFlats";
 import Aside from "../aside.js/Aside";

@@ -1,8 +1,6 @@
-import "./jobs.css";
 import React, { useEffect, useState } from "react";
 import { getJobs } from "../../utils/apiJobs";
 
-import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import Aside from "../aside.js/Aside";
 import Job from "./Job";
@@ -11,14 +9,13 @@ function Jobs() {
     const navigate = useNavigate();
     const [jobsArray, setJobs] = useState([]);
     const [filterState, setFilter] = useState(false);
-    const { code } = useParams();
 
     const makeArr = async () => {
         setJobs(await getJobs());
     };
     useEffect(() => {
         makeArr();
-    },);
+    }, []);
 
     const handleView = (id) => {
         navigate(`/jobs/${id}`);
@@ -52,8 +49,10 @@ function Jobs() {
                 }),
         },
     ];
+    
     return (
         <>
+        {console.log("#")}
             <Aside array={asideArr} />
             <div className="scope">
                 <div className="scope-head">
@@ -64,6 +63,9 @@ function Jobs() {
                     {jobsArray.map((job) => {
                         if (filterState === "*" || filterState === job.cleaned) {
                             return <Job key={job.record_no} jobObj={job} handleView={handleView} reRender={makeArr} />;
+                        }
+                        else {
+                            return null;
                         }
                     })}
                 </div>

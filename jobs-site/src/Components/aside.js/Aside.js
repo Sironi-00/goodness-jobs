@@ -1,21 +1,21 @@
-import './aside.css';
+import './Aside.css';
 import React from "react";
 import { Link } from "react-router-dom";
 
 function Aside({ array = [] }) {
-  return (
+    return (
     <div className="aside">
       <h2>Features:</h2>
       <ul className="features">
-        {array.map((obj) => {
+        {array.map((btnObj) => {
           return (
-            <li key={obj.name}>
-              <input type="button" value={obj.name} onClick={() => obj.asideClickHandler()} />
+            <li key={btnObj.name}>
+              <input type="button" value={btnObj.name} onClick={()=> btnObj.asideClickHandler()} />
             </li>
           );
         })}
       </ul>
-      <ul className="system-links">
+      <ul className="sys-links">
         <li>
           <Link to="/settings">Settings</Link>{" "}
         </li>

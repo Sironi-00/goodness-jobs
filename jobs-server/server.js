@@ -10,35 +10,38 @@ const app = express();
 
 app.use(helmet());
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-app.use(
-    cors({
-        origin: "*",
-        credentials: true,
-    })
-);
+app.use(express.urlencoded({extended: true}));
+app.use(cors({
+    origin: "*",
+    credentials: true,
+}));
 
-const store = new session.MemoryStore();
-app.use(
-    session({
-        key: "secret",
-        secret: "random",
-        resave: true,
-        saveUninitialized: false,
-        cookie: {
-            sameSite: false,
-            maxAge: 24 * 60 * 60 * 1000,
-            httpsOnly: true,
-            secure: true,
-        },
-        store: store,
-    })
-);
+app.use(session({
+    key: "secret",
+    secret: "random",
+    resave: true,
+    saveUninitialized: false,
+    cookie: {
+        sameSite: false,
+        maxAge: 24 * 60 * 60 * 1000,
+        httpsOnly: true,
+        secure: true
+    },
+}))
+
+
+// app.use((req, res, next)=> {
+//     console.log(`${req.method} ${req.url}`)
+//     next()
+// });
 
 const routes = require("./Routes/index");
 app.use("/api", routes);
 
-app.use("/*", express.static(path.join(__dirname,"build")));
+app.use(express.static(path.join(__dirname, "public")));
+app.get("/*", (req, res, next)=> {
+    res.sendFile(path.join(__dirname, 'public/index.html'));
+});
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Listening localhost:${PORT}`));

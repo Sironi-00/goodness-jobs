@@ -1,4 +1,3 @@
-import "./Flats.css";
 import React, { useEffect, useState } from "react";
 import { getFlats, deleteFlat } from "../../utils/apiFlats";
 import { useNavigate } from "react-router-dom";
@@ -9,12 +8,13 @@ function Flats() {
     const [flatsArray, setFlats] = useState([]);
 
     const makeArr = async () => {
-        setFlats(await getFlats());
+        let data = await getFlats();
+        setFlats(data);
     };
 
     useEffect(() => {
         makeArr();
-    });
+    }, []);
 
     const handleClick = (id) => {
         navigate(`./${id}`);
@@ -65,6 +65,7 @@ function Flats() {
     ];
     return (
         <>
+        {console.log("#")}
             <Aside array={asideArr} />
             <div className="scope">
                 <div className="scope-head">

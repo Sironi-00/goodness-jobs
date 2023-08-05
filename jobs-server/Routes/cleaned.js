@@ -20,8 +20,8 @@ const setInvoiced = async (request, response, next) => {
     const { record_no } = request.params;
     try {
         const { rows } = await pool.query(
-            "UPDATE cleaned SET invoiced = NOT cleaned.invoiced, date_invoiced = $1 WHERE record_no = $2 RETURNING *",
-            [new Date().toLocaleDateString(), record_no]
+            "UPDATE cleaned SET invoiced = NOT cleaned.invoiced, date_invoiced = NOW() WHERE record_no = $1 RETURNING *",
+            [record_no]
         );
         if (rows.length > 0) {
             response.status(201).json(rows);
