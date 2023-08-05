@@ -9,9 +9,11 @@ function Jobs({ jobObj = {}, handleView, reRender = null }) {
     const [job, setJob] = useState({ loaded: false });
     const makeState = async () => {
         setJob({ ...jobObj, loaded: true });
-        // if (recordId) {
-        //     return setJob({ ...await getJobByRecord(recordId), loaded: true });
-        // }
+    }
+    const makeEle = async () => {
+        if (recordId) {
+            return setJob({ ...await getJobByRecord(recordId), loaded: true });
+        }
     };
     const [toggleUpdate, setToggleUpdate] = useState(false);
     useEffect(() => {

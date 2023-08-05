@@ -4,13 +4,13 @@ import Aside from "../aside.js/Aside";
 import { useNavigate } from "react-router-dom";
 
 function Cleaned() {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const [cleanedArray, setCleaned] = useState([]);
   const makeArr = async () => setCleaned(await getCleaned());
   
   useEffect(() => {
-    makeArr()
-  }, []);
+    makeArr();
+  });
   const handleClick = (record_no) => {
     navigate(`/jobs/${record_no}`)
   };

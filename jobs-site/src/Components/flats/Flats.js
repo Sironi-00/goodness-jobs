@@ -14,7 +14,7 @@ function Flats() {
 
     useEffect(() => {
         makeArr();
-    }, []);
+    });
 
     const handleClick = (id) => {
         navigate(`./${id}`);

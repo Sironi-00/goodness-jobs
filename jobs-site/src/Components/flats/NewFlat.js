@@ -1,5 +1,5 @@
 import "./Flats.css";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { createFlat } from "../../utils/apiFlats";
 import Aside from "../aside.js/Aside";
 import { useNavigate } from "react-router-dom";

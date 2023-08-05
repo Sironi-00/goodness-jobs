@@ -1,9 +1,8 @@
 import './aside.css';
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function Aside({ array = [] }) {
-  const navigate = useNavigate();
   return (
     <div className="aside">
       <h2>Features:</h2>

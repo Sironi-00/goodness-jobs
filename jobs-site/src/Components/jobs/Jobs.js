@@ -1,7 +1,7 @@
 import "./jobs.css";
 import React, { useEffect, useState } from "react";
 import { getJobs } from "../../utils/apiJobs";
-import { getJobsByFlat } from "../../utils/apiFlats";
+
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import Aside from "../aside.js/Aside";
@@ -14,16 +14,11 @@ function Jobs() {
     const { code } = useParams();
 
     const makeArr = async () => {
-        let data = await getJobs();
-        if (code) {
-            data = data.filter(job => job.flat_code === code)
-            // setJobs(await getJobsByFlat(code));
-        }
-        setJobs(data);
+        setJobs(await getJobs());
     };
     useEffect(() => {
         makeArr();
-    }, []);
+    },);
 
     const handleView = (id) => {
         navigate(`/jobs/${id}`);
@@ -70,7 +65,6 @@ function Jobs() {
                         if (filterState === "*" || filterState === job.cleaned) {
                             return <Job key={job.record_no} jobObj={job} handleView={handleView} reRender={makeArr} />;
                         }
-                        return null;
                     })}
                 </div>
             </div>
