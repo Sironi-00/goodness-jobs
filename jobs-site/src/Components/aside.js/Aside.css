@@ -1,0 +1,28 @@
+.aside {
+    position: relative;
+}
+.aside .features {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+.aside li {
+    margin: 0.5rem 0;
+}
+.sys-links {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    margin: 0.35rem 0;
+    display: flex;
+    justify-content: space-evenly;
+}
+.sys-links li {
+    display: inline-flex;
+}
+.sys-links a {
+    color: blue;
+    padding: 0 0.25rem;
+    margin: 0.1rem;
+}
