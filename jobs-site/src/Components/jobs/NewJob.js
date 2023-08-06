@@ -14,7 +14,7 @@ function NewJob() {
     instructor: "",
     details: "",
   });
-    const [flat_codeArr, setCodesArr] = useState([]);
+    const [flat_codeArr, setCodesArr] = useState(["Loading"]);
     const makeFlatCode = async () => {
       let data = await getFlats();
       setCodesArr(data.map((flat) => flat.flat_code));
@@ -63,8 +63,6 @@ function NewJob() {
             <label htmlFor="flat_code">
               Flat Code:
               <select onChange={setFlatCode}>
-                <option value="0">Default </option>
-                {console.log(flat_codeArr)}
                 {flat_codeArr.map((code) => <option key={code} value={code}>{code}</option>)}
               </select>
             </label>
