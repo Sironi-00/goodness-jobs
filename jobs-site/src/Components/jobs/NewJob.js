@@ -14,10 +14,13 @@ function NewJob() {
     instructor: "",
     details: "",
   });
-    const [flat_codeArr, setCodesArr] = useState(["Loading"]);
-    useEffect(() => async () => {
-        const data = await getFlats();
-        setCodesArr(data.map((flat) => flat.flat_code));
+    const [flat_codeArr, setCodesArr] = useState([]);
+    const makeFlatCode = async () => {
+      let data = await getFlats();
+      setCodesArr(data.map((flat) => flat.flat_code));
+    };
+    useEffect(() => {
+      makeFlatCode()
     }, []);
 
   const setFlatCode = ({ target }) => {
@@ -61,6 +64,7 @@ function NewJob() {
               Flat Code:
               <select onChange={setFlatCode}>
                 <option value="0">Default </option>
+                {console.log(flat_codeArr)}
                 {flat_codeArr.map((code) => <option key={code} value={code}>{code}</option>)}
               </select>
             </label>
