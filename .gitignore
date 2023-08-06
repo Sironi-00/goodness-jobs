@@ -3,10 +3,6 @@
 */.pnp
 *.pnp.js
 
-
-# production
-jobs-site/build
-
 # misc
 *.env
 .DS_Store

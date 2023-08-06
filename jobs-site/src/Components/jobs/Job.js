@@ -52,7 +52,6 @@ function Jobs({ jobObj = {}, handleView, reRender = null }) {
 
     return (
         <>
-        {console.log("#")}
             {recordId ? <Aside /> : null}
             <div className={recordId ? "scope full" : "row job"} key={job.record_no}>
                 <p>

@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { createJob } from "../../utils/apiJobs";
+import { getFlats } from "../../utils/apiFlats"; 
 import Aside from "../aside.js/Aside";
 import { useNavigate } from "react-router-dom";
 
@@ -13,6 +14,11 @@ function NewJob() {
     instructor: "",
     details: "",
   });
+    const [flat_codeArr, setCodesArr] = useState(["Loading"]);
+    useEffect(() => async () => {
+        const data = await getFlats();
+        setCodesArr(data.map((flat) => flat.flat_code));
+    }, []);
 
   const setFlatCode = ({ target }) => {
     setJob(prev => ({ ...prev, flat_code: Number(target.value) }));
@@ -36,7 +42,8 @@ function NewJob() {
     e.preventDefault();
     const res = await createJob(newJob);
     if (res) {
-      navigate(`/jobs/${newJob.record_no}`);
+      // navigate(`/jobs/${newJob.record_no}`);
+      navigate(`/jobs`);
     } else {
       alert("make sure flat_code exists")
     }
@@ -52,7 +59,10 @@ function NewJob() {
           <form>
             <label htmlFor="flat_code">
               Flat Code:
-              <input type="number" value={newJob.flat_code} placeholder="Flat code (int)" required onChange={setFlatCode} />
+              <select onChange={setFlatCode}>
+                <option value="0">Default </option>
+                {flat_codeArr.map((code) => <option key={code} value={code}>{code}</option>)}
+              </select>
             </label>
             <label htmlFor="address">
               Record No:

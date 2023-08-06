@@ -65,7 +65,6 @@ function Flats() {
     ];
     return (
         <>
-        {console.log("#")}
             <Aside array={asideArr} />
             <div className="scope">
                 <div className="scope-head">

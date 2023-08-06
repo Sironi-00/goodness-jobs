@@ -17,8 +17,9 @@ body {
 
 #root {
     height: 100%;
+    max-width: 1400px;
     padding: 0;
-    margin: 0;
+    margin: 0 auto;
     display: grid;
     grid-template-rows: max-content auto;
 }
@@ -75,7 +76,7 @@ body {
     font-weight: bold;
 }
 /* //////////////////// */
-form input:not(input[type="submit"]) {
+form input:not(input[type="submit"]), form select {
     display: block;
     min-width: 35%;
     padding: 0.35rem 0.25rem;
@@ -85,10 +86,13 @@ form input[type=submit] {
     margin: 0 auto;
     box-shadow: inset 0rem 0rem 0 0.05rem #FFF;
 }
-input {
+input, select {
     border-radius: 0;
     border: 1px solid #0004;
     padding: 0.15rem 0.5rem;
+}
+select {
+    background-color: #FFF;
 }
 input[type="button"] {
     max-width: max-content;

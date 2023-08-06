@@ -52,7 +52,6 @@ function Jobs() {
     
     return (
         <>
-        {console.log("#")}
             <Aside array={asideArr} />
             <div className="scope">
                 <div className="scope-head">

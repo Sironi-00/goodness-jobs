@@ -27,7 +27,6 @@ function Cleaned() {
 
   return (
     <>
-    {console.log("#")}
       <Aside />
       <div className="scope">
         <div className="scope-head">
