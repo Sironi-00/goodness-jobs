@@ -5,10 +5,19 @@
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
+    list-style: none;
 }
-.aside li {
-    margin: 0.5rem 0;
+.aside .features li {
+    width: max-content;
 }
+@media screen and (max-width: 850px)  {
+    .aside .features {
+        flex-direction: row;
+        justify-content: space-evenly;
+        flex-wrap: wrap;
+    }
+}
+
 .sys-links {
     position: absolute;
     bottom: 0;
@@ -18,8 +27,14 @@
     display: flex;
     justify-content: space-evenly;
 }
+@media screen and (max-width: 850px)  {
+    .sys-links {
+        position: relative;
+    }
+}
 .sys-links li {
-    display: inline-flex;
+    /* display: inline-flex; */
+    list-style: none;
 }
 .sys-links a {
     color: blue;

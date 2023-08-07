@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 function Aside({ array = [] }) {
     return (
     <div className="aside">
-      <h2>Features:</h2>
+      
       <ul className="features">
         {array.map((btnObj) => {
           return (
