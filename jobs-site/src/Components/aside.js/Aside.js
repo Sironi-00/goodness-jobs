@@ -17,13 +17,19 @@ function Aside({ array = [] }) {
       </ul>
       <ul className="sys-links">
         <li>
-          <Link to="/settings">Settings</Link>{" "}
+          <Link className='global-links' to="/settings">Settings</Link>{" "}
         </li>
         <li>
-          <Link to="/help">Help</Link>
+          <Link className='global-links' to="/help">Help</Link>
         </li>
         <li>
-          <Link to="/logout"> Logout</Link>
+          <Link className='global-links' to="/register"> Register</Link>
+        </li>
+        <li>
+          <Link className='global-links' to="/login"> Login</Link>
+        </li>
+        <li>
+          <Link className='global-links' to="/logout"> Logout</Link>
         </li>
       </ul>
     </div>

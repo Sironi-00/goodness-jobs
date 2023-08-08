@@ -9,6 +9,9 @@ import Job from "./Components/jobs/Job";
 import NewJob from "./Components/jobs/NewJob";
 import Cleaned from "./Components/cleaned/Cleaned";
 
+import Login from "./Components/auth/Login";
+import Register from "./Components/auth/Register";
+
 function App() {
   return (
     <>
@@ -16,7 +19,9 @@ function App() {
         <Nav />
         <div className="main">
         <Routes>
-        <Route path="/" element={<Home />} />
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
           <Route path="/flats/new" element={<NewFlat />} />
           <Route path="/flats/:code" element={<Jobs />} />
           <Route path="/flats" element={<Flats />} />
