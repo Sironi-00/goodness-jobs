@@ -44,7 +44,7 @@ const updateUser = async ({selector, value}) => {
             "value": value
            })
     };
-    const response = await fetch(`${BASE_URL}/user`, requestBody);
+    const response = await fetch(`${BASE_URL}/users`, requestBody);
     if (response.ok) {
         return await response.json();
     } else {

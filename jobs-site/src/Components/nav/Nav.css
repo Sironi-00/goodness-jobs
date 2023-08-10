@@ -14,6 +14,7 @@ header nav {
     display: flex;
     justify-content: space-evenly;
     flex-wrap: wrap;
+    width: 40%;
 }
 header .nav-link {
     margin: 0 0.5rem;

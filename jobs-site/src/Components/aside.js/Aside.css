@@ -1,5 +1,7 @@
 .aside {
-    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 .aside .features {
     display: flex;
@@ -19,19 +21,12 @@
 }
 
 .sys-links {
-    position: absolute;
-    bottom: 0;
-    left: 0;
     margin: 0.35rem 0;
     display: flex;
     flex-direction: column;
-    /* justify-content: space-evenly; */
+    justify-content: space-evenly;
+    flex-wrap: wrap;
     list-style: none;
-}
-@media screen and (max-width: 850px)  {
-    .sys-links {
-        position: relative;
-    }
 }
 .sys-links li {
     display: inline-flex;
@@ -40,4 +35,10 @@
     text-decoration: underline;
     padding: 0.25rem;
     margin: 0.1rem;
+}
+@media screen and (max-width: 850px)  {
+    .sys-links {
+        
+        flex-direction: row;
+    }
 }
