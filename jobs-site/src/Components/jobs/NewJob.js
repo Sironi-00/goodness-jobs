@@ -7,8 +7,8 @@ import { useNavigate } from "react-router-dom";
 function NewJob() {
   const navigate = useNavigate();
   const [newJob, setJob] = useState({
-    flat_code: false,
-    record_no: false,
+    flat_code: 0,
+    record_no: 0,
     date_vacant: false,
     date_deadline: false,
     instructor: "",
