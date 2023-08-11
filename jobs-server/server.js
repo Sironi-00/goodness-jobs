@@ -1,7 +1,6 @@
 const path = require("path");
 const express = require("express");
-const session = require("express-session");
-const cors = require("cors");
+const session = require("cookie-session");
 const helmet = require("helmet");
 
 require("dotenv").config();
@@ -11,10 +10,7 @@ const app = express();
 app.use(helmet());
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
-app.use(cors({
-    origin: "*",
-    credentials: true,
-}));
+app.disable("X-Powered-By")
 
 app.use(session({
     key: "secret",
@@ -31,7 +27,8 @@ app.use(session({
 
 
 // app.use((req, res, next)=> {
-//     console.log(`${req.method} ${req.url}`)
+//     console.log(`${req.method} ${req.url}`);
+//     console.log(req.session.authenticated)
 //     next()
 // });
 

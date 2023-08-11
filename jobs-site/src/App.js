@@ -11,17 +11,20 @@ import Cleaned from "./Components/cleaned/Cleaned";
 
 import Login from "./Components/auth/Login";
 import Register from "./Components/auth/Register";
+import { useState } from "react";
 
 function App() {
+  const [currentUser, setCurrentUser] = useState({username: "", id: ""});
+  
   return (
     <>
       <BrowserRouter>
-        <Nav />
+        <Nav currentUser={currentUser} />
         <div className="main">
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
+          <Route path="/login" element={<Login setCurrentUser={setCurrentUser} />} />
+          <Route path="/register" element={<Register setCurrentUser={setCurrentUser} />} />
           <Route path="/flats/new" element={<NewFlat />} />
           <Route path="/flats/:code" element={<Jobs />} />
           <Route path="/flats" element={<Flats />} />

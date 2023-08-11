@@ -3,10 +3,10 @@ BEGIN;
 CREATE TABLE users
 (
     id character varying(50) PRIMARY KEY,
-    name character varying(50) NOT NULL UNIQUE,
-    password character varying(50) NOT NULL,
-    group_role character varying(50),
-    active boolean
+    username character varying(50) NOT NULL UNIQUE,
+    password character varying(200) NOT NULL,
+    memberof character varying(50),
+    active boolean DEFAULT false
 );
 
 CREATE TABLE flats

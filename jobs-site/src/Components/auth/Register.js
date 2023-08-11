@@ -3,7 +3,7 @@ import Aside from '../aside.js/Aside'
 import { useNavigate } from 'react-router-dom';
 import { createUser } from "../../utils/apiUsers";
 
-function Register() {
+function Register({setCurrentUser}) {
     const navigate = useNavigate();
     const [newUser, setNewUser] = useState({
         username: "",
@@ -11,7 +11,7 @@ function Register() {
         confirmPassword: "",
         group: ""
     });
-    const setUsername = ({target}) => {
+    const setName = ({target}) => {
         setNewUser(prev => ({...prev, username: target.value}));
     };
     const setPassword = ({target}) => {
@@ -29,10 +29,9 @@ function Register() {
             alert("Password not match!");
             return
         }
-        console.log(newUser);
-        return;
-        const res = await createUser({newUser});
+        const res = await createUser(newUser);
         if (res) {
+            setCurrentUser(res);
             navigate("/flats")
         }
     };
@@ -42,17 +41,17 @@ function Register() {
     <Aside />
     <div className='scope'>
         <form onSubmit={handleSubmit}>
-        <label htmlFor="username">Username:</label>
-        <input type='text' value={newUser.username} placeholder='Sironi' required onChange={setUsername}/>
+        <label htmlFor="username">Name:</label>
+        <input type='text' value={newUser.username} placeholder='Sironi' required onChange={setName}/>
         <label htmlFor="password">Password:</label>
         <input type='password' value={newUser.password} placeholder='P@s$Th3W0rd' required onChange={setPassword}/>
         <label htmlFor="confirm-password">Confirm Password:</label>
         <input type='password' value={newUser.confirmPassword} placeholder='p@s$th3word' required onChange={setConfirmPassword}/>
         <label htmlFor="group">Group:</label>
-        <select onChange={setGroup} value={newUser.group}>
-        <option value="">Default</option>
-            <option value="fac">Fac</option>
-            <option value="gc">GC</option>
+        <select onChange={setGroup}>
+            <option value="agent">Agent</option>
+            <option value="employee">Employee</option>
+            <option value="host">Host</option>
             <option value="admin">Admin</option>
         </select>
         <input type='submit' value="Register" />

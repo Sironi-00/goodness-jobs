@@ -2,10 +2,13 @@ import "./Nav.css";
 import React from "react";
 import { NavLink } from "react-router-dom";
 
-function Nav() {
+function Nav({currentUser = "Guest"}) {
     return (
         <header>
+            <div className="avatar">
             <h1>Goodness Jobs</h1>
+                <p>&gt;{currentUser.username}&lt;</p>
+            </div>
             <nav>
                 <NavLink className="nav-link" to="/">
                     Home

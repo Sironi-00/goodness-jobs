@@ -6,8 +6,15 @@ const handleError = (err, req, res, next) => {
     res.status(err.status || 400).json(err.message);
 }
 
-// const userRouter = require("./user")
-// mainRouter.use("/user", userRouter)
+const { isAuthenticate, checkRole } = require("../utils/auth");
+
+// Users
+const { createUser, deleteUser, login, logout } = require("./user")
+mainRouter.post("/user", login);
+mainRouter.post("/user/new", createUser);
+mainRouter.delete("/user/:username", deleteUser);
+mainRouter.get("/user/logout", logout)
+
 
 // Flats
 const { getFlats, getJobsByFlat, searchFlatByAddress, createFlat, deleteFlat, } = require("./flats");
