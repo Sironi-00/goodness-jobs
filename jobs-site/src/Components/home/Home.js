@@ -32,6 +32,12 @@ function Home({recordId}) {
       <p>On Invoicing the the date is updated</p>
       <p>...</p>
     </article>
+    <article>
+      <h2>New User</h2>
+      <p>Creating an account should have limited access until Admin allow full access</p>
+      <p>Group/Role may limit access based on group</p>
+      <p>...</p>
+    </article>
     </div>
     </>
   );

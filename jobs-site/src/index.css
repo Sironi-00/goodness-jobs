@@ -7,10 +7,6 @@
 body {
     margin: 0;
     height: 100dvh;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
-        "Droid Sans", "Helvetica Neue", sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
     background-color: #fff;
 }
 
@@ -27,7 +23,7 @@ body {
     grid-template-columns: 1fr 7fr;
     overflow: hidden;
 }
-@media screen and (max-width: 850px)  {
+@media screen and (max-width: 850px) {
     #root {
         display: block;
     }
@@ -56,6 +52,7 @@ body {
     padding: 0.75rem 0.5rem;
     display: grid;
     align-items: center;
+    gap: 0.5rem 1rem;
 }
 .row:hover {
     scale: 1.005;
@@ -64,33 +61,52 @@ body {
     grid-template-columns: 1.5fr 2fr repeat(2, max-content);
 }
 .row.job {
-    grid-template-columns: 1fr 1fr 1fr 2fr;
+    grid-template-columns: repeat(3, max-content) 2fr;
+    grid-template-rows: 1fr 1fr;
+}
+@media screen and (max-width: 1000px) {
+    .row .key-text {
+        display: block;
+    }
 }
 .row.job .buttons {
-    grid-row: -1;
     grid-column: -1;
+    grid-row-start: 1;
+    grid-row-end: span 2;
 
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
+    align-items: flex-end;
 }
 .row.cleaned {
     grid-template-columns: repeat(5, 1fr) 0fr;
 }
+
 @media screen and (max-width: 650px)  {
-    .row {
+    .row.flats {
         display: block;
     }
     .row.job {
-        max-height: 240px;
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .row.job p {
+        max-height: 3.5rem;
         overflow: scroll;
+        min-width: 30%;
     }
     .row.job .buttons {
+        width: 100%;
+        display: flex;
         flex-direction: row;
-        justify-content: start;
+        justify-content: flex-start;
+    }
+    .row.cleaned {
+        display: flex;
+        flex-wrap: wrap;
     }
 }
-
 
 .key-text {
     font-weight: bold;
@@ -99,25 +115,28 @@ body {
 form label {
     display: block;
 }
-form input:not(input[type="submit"]), form select {
+form input:not(input[type="submit"]),
+form select {
     display: block;
     min-width: 35%;
     padding: 0.35rem 0.25rem;
     margin-bottom: 0.5rem;
 }
-form input[type=submit] {
+form input[type="submit"] {
     margin: 0 auto;
-    box-shadow: inset 0rem 0rem 0 0.05rem #FFF;
+    box-shadow: inset 0rem 0rem 0 0.05rem #fff;
 }
-input, select {
+input,
+select {
     border-radius: 0;
     border: 1px solid #0004;
     padding: 0.15rem 0.5rem;
 }
 select {
-    background-color: #FFF;
+    background-color: #fff;
 }
-input[type="button"], .global-links {
+input[type="button"],
+.global-links {
     max-width: max-content;
     padding: 0.35rem 0.5rem;
     margin: 0.25rem 0.5rem;

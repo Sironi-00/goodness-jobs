@@ -3,12 +3,12 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { logout } from '../../utils/apiUsers';
 
-function Aside({ array = [] }) {
+function Aside({ asideArr = [] }) {
     return (
     <div className="aside">
       
       <ul className="features">
-        {array.map((btnObj) => {
+        {asideArr.map((btnObj) => {
           return (
             <li key={btnObj.name}>
               <input type="button" value={btnObj.name} onClick={()=> btnObj.asideClickHandler()} />

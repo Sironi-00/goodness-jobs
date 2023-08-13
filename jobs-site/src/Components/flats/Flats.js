@@ -8,8 +8,7 @@ function Flats() {
     const [flatsArray, setFlats] = useState([]);
 
     const makeArr = async () => {
-        let data = await getFlats();
-        setFlats(data);
+        setFlats(await getFlats());
     };
 
     useEffect(() => {
@@ -65,7 +64,7 @@ function Flats() {
     ];
     return (
         <>
-            <Aside array={asideArr} />
+            <Aside asideArr={asideArr} />
             <div className="scope">
                 <div className="scope-head">
                     <h2>Flats</h2>
@@ -83,8 +82,10 @@ function Flats() {
                                     <span className="key-text">Address: </span>
                                     {address}{" "}
                                 </p>
+                                
                                 <input type="button" value="View Jobs" onClick={() => handleClick(flat_code)} />
                                 <input type="button" value="Delete" onClick={() => handleDelete(flat_code)} />
+                                
                             </div>
                         );
                     })}

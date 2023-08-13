@@ -41,7 +41,7 @@ function Register({setCurrentUser}) {
     <Aside />
     <div className='scope'>
         <form onSubmit={handleSubmit}>
-        <label htmlFor="username">Name:</label>
+        <label htmlFor="username">Username:</label>
         <input type='text' value={newUser.username} placeholder='Sironi' required onChange={setName}/>
         <label htmlFor="password">Password:</label>
         <input type='password' value={newUser.password} placeholder='P@s$Th3W0rd' required onChange={setPassword}/>

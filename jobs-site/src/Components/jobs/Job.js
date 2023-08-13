@@ -7,18 +7,19 @@ import UpdateJob from "./updateJob";
 function Jobs({ jobObj = {}, handleView, reRender = null }) {
     const { recordId } = useParams();
     const [job, setJob] = useState({ loaded: false });
+
     const makeState = async () => {
-        setJob({ ...jobObj, loaded: true });
-    }
-    const makeEle = async () => {
         if (recordId) {
-            return setJob({ ...await getJobByRecord(recordId), loaded: true });
+            return setJob({ ...(await getJobByRecord(recordId)), loaded: true });
+        } else {
+            setJob({ ...jobObj, loaded: true });
         }
     };
+
     const [toggleUpdate, setToggleUpdate] = useState(false);
     useEffect(() => {
         makeState();
-    }, []);
+    }, [recordId]);
 
     const handleDone = async (record_no) => {
         const confirmation = window.confirm("Are you sure?");
@@ -80,16 +81,16 @@ function Jobs({ jobObj = {}, handleView, reRender = null }) {
                 </p>
 
                 <div className="buttons">
-                    <input type="button" value="Cleaned" onClick={() => handleDone(job.record_no)} />
                     {recordId ? "" : <input type="button" value="View" onClick={() => handleView(job.record_no)} />}
                     {recordId ? (
                         <input type="button" value="Update" onClick={() => setToggleUpdate((prev) => !prev)} />
                     ) : (
                         ""
                     )}
+                    <input type="button" value="Cleaned" onClick={() => handleDone(job.record_no)} />
                     <input type="button" value="Delete" onClick={() => handleDelete(job.record_no)} />
                 </div>
-                {toggleUpdate ? <UpdateJob record_no={job.record_no} selectorArray={Object.keys(job)} /> : ""}
+                {toggleUpdate ? <UpdateJob record_no={job.record_no} selectorArray={Object.keys(job)} reRender={makeState} setToggleUpdate={setToggleUpdate} /> : ""}
             </div>
         </>
     );

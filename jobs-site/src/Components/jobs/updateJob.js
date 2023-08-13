@@ -1,9 +1,7 @@
 import React, { useState } from "react";
 import { updateJob } from "../../utils/apiJobs";
-import { useNavigate } from "react-router-dom";
 
-function UpdateJob({record_no , selectorArray = []}) {
-    const navigate = useNavigate();
+function UpdateJob({record_no , selectorArray = [], reRender, setToggleUpdate}) {
     const [selectorState, setSelectorState] = useState("");
     const [valueState, setValueState] = useState("");
 
@@ -11,7 +9,8 @@ function UpdateJob({record_no , selectorArray = []}) {
         e.preventDefault();
         const res = await updateJob({record_no, selector, value});
         if (res) {
-            navigate(`/jobs/${record_no}`)
+          setToggleUpdate(prev => !prev);
+          reRender();
         }
     }
     return (

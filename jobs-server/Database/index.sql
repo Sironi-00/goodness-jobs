@@ -38,11 +38,11 @@ CREATE TABLE cleaned
 );
 -- ALTER
 
-ALTER TABLE cleaned
-    ADD FOREIGN KEY (record_no)
-    REFERENCES jobs (record_no)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE;
+-- ALTER TABLE cleaned
+--     ADD FOREIGN KEY (record_no)
+--     REFERENCES jobs (record_no)
+--     ON DELETE CASCADE
+--     ON UPDATE CASCADE;
 
 
 END;
