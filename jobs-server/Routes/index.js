@@ -6,7 +6,7 @@ const handleError = (err, req, res, next) => {
     res.status(err.status || 400).json(err.message);
 }
 
-const { isAuthenticate, checkRole } = require("../utils/auth");
+const { isAuthenticated, checkRole } = require("../utils/auth");
 
 // Users
 const { createUser, deleteUser, login, logout } = require("./user")

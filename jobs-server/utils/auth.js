@@ -1,11 +1,10 @@
 // oath privileges check
-const isAuthenticate = (request, response, next) => {
+const isAuthenticated = (request, response, next) => {
     if (request.session.authenticated) {
         next();
         return;
     } else {
         return response.redirect(403,'/login');
-
     }
 }
 
@@ -14,6 +13,6 @@ const checkRole = () => {
 }
 
 module.exports = {
-    isAuthenticate,
+    isAuthenticated,
     checkRole
 }

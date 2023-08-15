@@ -6,8 +6,8 @@ import { useNavigate } from 'react-router-dom';
 function Login({setCurrentUser}) {
     const navigate = useNavigate();
   const [user, setUser] = useState({
-    username: "",
-    password: ""
+    username: "sironi",
+    password: "1234"
   });
   const setuserName = ({target}) => {
     setUser(prev => ({...prev, username: target.value}));

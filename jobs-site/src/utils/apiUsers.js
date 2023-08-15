@@ -1,4 +1,5 @@
 import BASE_URL from "./BASE_URL";
+import { apiResponse } from "./api";
 
 const getUserByUsername = async ({ username, password }) => {
     try {
@@ -33,9 +34,7 @@ const createUser = async ({ username, password, group }) => {
     };
     const response = await fetch(`${BASE_URL}/user/new`, requestBody);
     if (response.ok) {
-        return await response.json();
-    } else {
-        return false;
+        return true;
     }
 };
 
@@ -51,11 +50,7 @@ const updateUser = async ({ selector, value }) => {
         }),
     };
     const response = await fetch(`${BASE_URL}/users`, requestBody);
-    if (response.ok) {
-        return await response.json();
-    } else {
-        return [];
-    }
+    return await apiResponse(response);
 };
 
 const deleteUser = async (name) => {

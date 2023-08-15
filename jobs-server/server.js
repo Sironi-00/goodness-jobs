@@ -10,7 +10,7 @@ const app = express();
 app.use(helmet());
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
-app.disable("X-Powered-By")
+app.disable("X-Powered-By");
 
 app.use(session({
     key: "secret",
@@ -27,8 +27,7 @@ app.use(session({
 
 
 // app.use((req, res, next)=> {
-//     console.log(`${req.method} ${req.url}`);
-//     console.log(req.session.authenticated)
+//     console.log(`${req.method} ${req.url} auth:${req.session.authenticated}`);
 //     next()
 // });
 
