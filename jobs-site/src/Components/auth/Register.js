@@ -31,7 +31,7 @@ function Register({setCurrentUser}) {
         }
         const res = await createUser(newUser);
         if (res) {
-            setCurrentUser(res);
+            setCurrentUser({ ...res, authenticated: true });
             navigate("/flats")
         }
     };

@@ -19,7 +19,7 @@ app.use(session({
     saveUninitialized: false,
     cookie: {
         sameSite: false,
-        maxAge: 24 * 60 * 60 * 1000,
+        maxAge: 1 * 60 * 60 * 1000,
         httpsOnly: true,
         secure: true
     },

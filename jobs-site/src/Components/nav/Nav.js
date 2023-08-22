@@ -2,12 +2,12 @@ import "./Nav.css";
 import React from "react";
 import { NavLink } from "react-router-dom";
 
-function Nav({currentUser = "Guest"}) {
+function Nav({currentUser = {}}) {
     return (
         <header>
             <div className="avatar">
             <h1>Goodness Jobs</h1>
-                <p>&gt;{currentUser.username}&lt;</p>
+                {currentUser?.username && <p>{currentUser?.username}</p>}
             </div>
             <nav>
                 <NavLink className="nav-link" to="/">
