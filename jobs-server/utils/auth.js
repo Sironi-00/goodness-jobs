@@ -8,7 +8,7 @@ const isAuthenticated = (request, response, next) => {
     }
 }
 
-const checkRole = () => {
+const checkRole = (request, response, next) => {
     // check if user.active && user.memeberof
 }
 
