@@ -15,6 +15,8 @@ mainRouter.post("/user/new", createUser);
 mainRouter.delete("/user/:username", deleteUser);
 mainRouter.get("/user/logout", logout)
 
+// All routers after require auth
+mainRouter.use(isAuthenticated);
 
 // Flats
 const { getFlats, getJobsByFlat, searchFlatByAddress, createFlat, deleteFlat, } = require("./flats");

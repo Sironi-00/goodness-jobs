@@ -14,9 +14,15 @@ import Login from "./Components/auth/Login";
 import Logout from "./Components/auth/Logout.js";
 import Register from "./Components/auth/Register";
 import ProtectedRoutes from "./Components/auth/ProtectedRoutes";
+import { getSessionUser, setSessionUser } from "./utils/session";
 
 function App() {
-  const [currentUser, setCurrentUser] = useState({username: "", id: "", authenticated: false});
+  const [currentUser, setCurrentUser] = useState(getSessionUser());
+  
+  const userSession = (user) => {
+    // ⚠️
+    setCurrentUser(setSessionUser(user));
+  }
   return (
     <>
       <BrowserRouter>
@@ -24,11 +30,11 @@ function App() {
         <div className="main">
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/login" element={<Login setCurrentUser={setCurrentUser} />} />
-          <Route path="/logout" element={<Logout setCurrentUser={setCurrentUser} />} />
-          <Route path="/register" element={<Register setCurrentUser={setCurrentUser} />} />
+          <Route path="/login" element={<Login setCurrentUser={userSession} />} />
+          <Route path="/logout" element={<Logout setCurrentUser={userSession} />} />
+          <Route path="/register" element={<Register setCurrentUser={userSession} />} />
           
-          <Route element={<ProtectedRoutes user={currentUser} />}> 
+          <Route element={<ProtectedRoutes user={currentUser} setCurrentUser={userSession} />}> 
             <Route path="/flats/new" element={<NewFlat />} />
             <Route path="/flats/:code" element={<Jobs />} />
             <Route path="/flats" element={<Flats />}/>

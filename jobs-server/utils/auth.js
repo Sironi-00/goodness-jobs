@@ -1,5 +1,6 @@
 // oath privileges check
 const isAuthenticated = (request, response, next) => {
+    //console.log("Checking auth");
     if (request.session.authenticated) {
         next();
         return;

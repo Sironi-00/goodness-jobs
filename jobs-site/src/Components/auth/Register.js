@@ -11,17 +11,8 @@ function Register({setCurrentUser}) {
         confirmPassword: "",
         group: ""
     });
-    const setName = ({target}) => {
-        setNewUser(prev => ({...prev, username: target.value}));
-    };
-    const setPassword = ({target}) => {
-        setNewUser(prev => ({...prev, password: target.value}));
-    };
-    const setConfirmPassword = ({target}) => {
-        setNewUser(prev => ({...prev, confirmPassword: target.value}));
-    };
-    const setGroup = ({target}) => {
-        setNewUser(prev => ({...prev, group: target.value}));
+    const handleSetUser = ({target}) => {
+        setNewUser(prev => ({...prev, [target.name]: target.value}));
     };
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -42,18 +33,22 @@ function Register({setCurrentUser}) {
     <div className='scope'>
         <form onSubmit={handleSubmit}>
         <label htmlFor="username">Username:</label>
-        <input type='text' value={newUser.username} placeholder='Sironi' required onChange={setName}/>
+        <input type='text' name="username" value={newUser.username} placeholder='Sironi' required onChange={handleSetUser}/>
+        
         <label htmlFor="password">Password:</label>
-        <input type='password' value={newUser.password} placeholder='P@s$Th3W0rd' required onChange={setPassword}/>
-        <label htmlFor="confirm-password">Confirm Password:</label>
-        <input type='password' value={newUser.confirmPassword} placeholder='p@s$th3word' required onChange={setConfirmPassword}/>
+        <input type='password' name="password" value={newUser.password} placeholder='P@s$Th3W0rd' minLength="5" required onChange={handleSetUser}/>
+        
+        <label htmlFor="confirmPassword">Confirm Password:</label>
+        <input type='password' name="confirmPassword" value={newUser.confirmPassword} placeholder='p@s$th3word' minLength="5" required onChange={handleSetUser}/>
+        
         <label htmlFor="group">Group:</label>
-        <select onChange={setGroup}>
+        <select name="group" onChange={handleSetUser}>
             <option value="agent">Agent</option>
             <option value="employee">Employee</option>
             <option value="host">Host</option>
             <option value="admin">Admin</option>
         </select>
+
         <input type='submit' value="Register" />
         </form>
     </div>

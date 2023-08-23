@@ -45,10 +45,7 @@ function NewJob() {
     e.preventDefault();
     const res = await createJob(newJob);
     if (res) {
-      // navigate(`/jobs/${newJob.record_no}`);
-      navigate(`/jobs`);
-    } else {
-      alert("make sure flat_code exists")
+      navigate(`/jobs/${newJob.record_no}`);
     }
   };
   return (
