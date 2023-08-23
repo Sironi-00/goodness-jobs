@@ -33,9 +33,7 @@ const createUser = async ({ username, password, group }) => {
         }),
     };
     const response = await fetch(`${BASE_URL}/user/new`, requestBody);
-    if (response.ok) {
-        return true;
-    }
+    return await apiResponse(response);
 };
 
 const updateUser = async ({ selector, value }) => {

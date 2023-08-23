@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useNavigate, Outlet } from "react-router-dom";
 
-function ProtectedRoutes({user = false}) {
+function ProtectedRoutes({ user }) {
     const navigate = useNavigate();
     useEffect(()=> {
         if (!user?.authenticated) {

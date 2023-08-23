@@ -83,7 +83,7 @@ function Jobs({ jobObj = {}, handleView, reRender = null }) {
                 <div className="buttons">
                     {recordId ? "" : <input type="button" value="View" onClick={() => handleView(job.record_no)} />}
                     {recordId ? (
-                        <input type="button" value="Update" onClick={() => setToggleUpdate((prev) => !prev)} />
+                        <input type="button" value={toggleUpdate?"Hide Updater":"Update"} onClick={() => setToggleUpdate((prev) => !prev)} />
                     ) : (
                         ""
                     )}
