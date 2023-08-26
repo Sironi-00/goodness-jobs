@@ -34,3 +34,33 @@ header .nav-link.active {
     scale: 1.075;
     font-weight: bold;
 }
+
+.avatar {
+    position: relative;
+}
+#user-profile {
+    border-radius: 50%;
+    width: 3rem;
+    height: 3rem;
+    overflow: hidden;
+}
+#user-profile img {
+    background-color: #000;
+    background: radial-gradient(#1ad, #0009);
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.user-menu {
+    display: none;
+    position: absolute;
+    background-color: #FFF;
+    border: 2px solid #000;
+}
+.user-menu:hover {
+    display: block;
+}
+#user-profile:hover ~ .user-menu {
+    display: block;
+}
